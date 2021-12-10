@@ -4,19 +4,29 @@ using UnityEngine;
 
 public class spawnManager : MonoBehaviour
 {
+    //Los corchetes estipulan que es un Array [lista].
+    //ambitoVisibilidad tipoObjeto[claudatos para lista] nombreObjeto.
     public GameObject[] animalPrefabs;
-    public Vector3 spawnPosition = new Vector3(0, 0, 20);
+
+    public Vector3 spawnPosition;
     public int animalIndex;
+    public float randomX;
+    private float limX = 15f;
 
     // Start is called before the first frame update
     void Start()
     {
-        Instantiate(animalPrefabs[0], spawnPosition, animalPrefabs[0].transform.rotation);
+        InvokeRepeating("SpawnRandomAnimal", time:2, repeatRate:1.5f);
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void SpawnRandomAnimal()
     {
-        
+        randomX = Random.Range(-limX, limX);
+        spawnPosition = new Vector3(randomX, 0, 20);
+
+        //Range(0, numero de elementos que tiene mi array).
+        animalIndex = Random.Range(0, animalPrefabs.Length);
+        Instantiate(animalPrefabs[animalIndex], spawnPosition, animalPrefabs[animalIndex].transform.rotation);
     }
 }

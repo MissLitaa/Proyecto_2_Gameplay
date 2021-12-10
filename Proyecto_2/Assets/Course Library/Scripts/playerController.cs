@@ -7,7 +7,7 @@ public class playerController : MonoBehaviour
     private Vector3 initialPose = Vector3.zero;
     public float playerSpeed = 10f;
     private float horizontalInput;
-    private float xRange = 13f;
+    private float xRange = 15f;
     public GameObject projectilePrefab;
 
 
@@ -35,7 +35,7 @@ public class playerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            //Dispara un proyectil. Instanciar: nombrePrefab, posiciónDelPlayer, nombrePrefab.rotaciónPrefabOriginal
+            //Dispara un proyectil. Instanciar: nombrePrefab, posiciónDelPlayer(por que el script está asignado a player), nombrePrefab.rotaciónPrefabOriginal
             Instantiate(projectilePrefab, transform.position,
                 projectilePrefab.transform.rotation);
         }
